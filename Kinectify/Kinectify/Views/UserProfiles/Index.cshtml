@@ -1,0 +1,111 @@
+﻿@model IEnumerable<Kinectify.Models.UserProfile>
+
+@{
+    ViewBag.Title = "Index";
+	Layout = "~/Views/Shared/Empty_Layout.cshtml";
+
+	int ProfileCount = 0;
+	
+	foreach (var item in Model)
+	{
+		ProfileCount++;
+	}
+}
+
+<div class="layers accelero" data-control-method="touch" data-max-angle="1" data-speed="0.15">
+
+	@*<div class="layer layer-4"></div>*@
+
+	@*<div class="layer layer-3"></div>*@
+
+	@*@{
+		using System.Diagnostics;
+		Process.Start(@"C:\Path\OtherApp.exe");
+	}*@
+	
+
+	<div class="row">
+		@{
+			foreach (var item in Model)
+			{
+				<div class="col-md-4">
+					<h1><a href="@Url.Action("Index", "Home", new { id = item.ID })"><span>@Html.DisplayFor(modelItem => item.UserName)</span></a></h1>
+					@Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+					@Html.ActionLink("Delete", "Delete", new { id = item.ID })
+				</div>
+			}
+
+			if (ProfileCount == 1)
+			{
+				<div class="col-md-4">
+					<h1>@Html.ActionLink("Create New", "Create")</h1>
+				</div>
+				<div class="col-md-4">
+					<h1>@Html.ActionLink("Create New", "Create")</h1>
+				</div>
+			}
+			else if (ProfileCount == 2)
+			{
+				<div class="col-md-4">
+					<h1>@Html.ActionLink("Create New", "Create")</h1>
+				</div>
+			}
+		}
+	</div>
+
+	<div class="layer layer-2"></div>
+
+	<div class="layer layer-1"></div>
+
+</div>
+
+
+	@*<p>
+			@Html.ActionLink("Create New", "Create")
+		</p>
+		<table class="table">
+			<tr>
+				<th>
+					@Html.DisplayNameFor(model => model.UserName)
+				</th>
+				<th>
+					@Html.DisplayNameFor(model => model.KinectName)
+				</th>
+				<th>
+					@Html.DisplayNameFor(model => model.ImageURL)
+				</th>
+				<th>
+					@Html.DisplayNameFor(model => model.VoiceURL)
+				</th>
+				<th>
+					@Html.DisplayNameFor(model => model.VoiceActive)
+				</th>
+				<th></th>
+			</tr>
+
+		@foreach (var item in Model) {
+			<tr>
+				<td>
+					@Html.DisplayFor(modelItem => item.UserName)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.KinectName)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.ImageURL)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.VoiceURL)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.VoiceActive)
+				</td>
+				<td>
+					@Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+					@Html.ActionLink("Details", "Details", new { id=item.ID }) |
+					@Html.ActionLink("Delete", "Delete", new { id=item.ID })
+				</td>
+			</tr>
+		}
+
+		</table>*@

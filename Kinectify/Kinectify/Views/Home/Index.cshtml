@@ -1,0 +1,98 @@
+﻿
+
+@{
+	ViewBag.Title = "Home Page";
+	Layout = "~/Views/Shared/Empty_Layout.cshtml";
+	
+	
+}
+
+
+
+
+
+
+<div class="layers accelero" data-control-method="touch" data-max-angle="1" data-speed="0.15" style="width: 100%; height: 800px">
+
+	<div>
+		<div class="row">
+			<a class="btn btn-default" href='@Url.Action("Index" , "UserProfiles" )'>USER SELECT</a>
+		</div>
+
+		<div class="row">
+			<div class="col-md-1"></div>
+			<div class="col-md-3">
+				<h2>Programs</h2>
+
+				@{ int i = 0; }
+				<div class="container">
+					<div class="row">
+						@foreach (var item in ViewBag.UserPrograms)
+						{
+							if (i > 0 && i % 2 == 0)
+							{
+								// close the div and start again
+								@:</div><div class="row">
+							}
+							<div class="col-md-6">
+								<div style="width:150px;height:150px">
+									<a href="@Url.Action("Details", "UserPrograms", new { id = item.ID })">
+										@item.Name
+										<img src="@Url.Content("~/images/greytilesquare150x150.png")" alt=""
+											 style="position:absolute; left: 0px; top: 0px; z-index: -1;" />
+									</a>
+								</div>
+							</div>
+							i++;
+						}
+					</div>
+				</div>
+
+				<p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+			</div>
+
+
+			<div class="col-md-4">
+				<h2>Get more libraries</h2>
+				<p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
+				<p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+			</div>
+
+
+			<div class="col-md-3">
+				<h2>Voice Commands</h2>
+				@{ i = 0; }
+				<div class="container">
+					<div class="row">
+						@foreach (var item in ViewBag.VoiceCommands)
+						{
+							if (i > 0 && i % 2 == 0)
+							{
+								// close the div and start again
+								@:></div><div class="row">
+							}
+							<div class="col-md-6" style="height: 100px">
+								<a href="@Url.Action("Details", "VoiceCommmands", new { id = item.ID })"><span>@item.Phrase</span></a>
+							</div>
+							i++;
+						}
+					</div>
+				</div>
+				
+				
+				<p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+			</div>
+			<div class="col-md-1"></div>
+		</div>
+	</div>
+	@*<div class="layer layer-4"></div>
+
+		<div class="layer layer-3"></div>*@
+
+	<div class="layer layer-2"></div>
+
+	<div class="layer layer-1"></div>
+
+</div>
+
+@*<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>*@

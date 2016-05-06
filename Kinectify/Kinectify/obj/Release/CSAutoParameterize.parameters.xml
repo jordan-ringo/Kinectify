@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="KinectifyContext-Web.config Connection String" description="KinectifyContext Connection String used in web.config by the application to access the database." defaultValue="Data Source=(localdb)\v11.0; Initial Catalog=KinectifyContext-20160425105450; Integrated Security=True; MultipleActiveResultSets=True; AttachDbFilename=|DataDirectory|KinectifyContext-20160425105450.mdf" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\Jordan\\Documents\\OIT\ Classes\\Senior\ Project\ Year\ 2\\Kinectify\\Kinectify\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='KinectifyContext']/@connectionString" />
+  </parameter>
+  <parameter name="KinectifyContext_DatabasePublish-Web.config Connection String" description="KinectifyContext_DatabasePublish Connection String used in web.config by the application to access the database." defaultValue="KinectifyContext_DatabasePublish.ConnetionString" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\Jordan\\Documents\\OIT\ Classes\\Senior\ Project\ Year\ 2\\Kinectify\\Kinectify\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='KinectifyContext_DatabasePublish']/@connectionString" />
+  </parameter>
+</parameters>
