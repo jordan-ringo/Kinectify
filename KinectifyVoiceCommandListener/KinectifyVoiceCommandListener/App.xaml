@@ -1,0 +1,25 @@
+﻿<Application x:Class="KinectifyVoiceCommandListener.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             StartupUri="MainWindow.xaml">
+	<Application.Resources>
+
+		
+		<!--FROM THE TUTORIAL>>>>> still need to change this app to do what it did later.-->
+		
+		<!--
+            Note that this application does not have a StartupUri declared, so no Window is automatically loaded.
+            Also, the ShutdownMode was set to explicit, so we have to close the application programmatically
+        -->
+
+
+		<!-- merge NotifyIcon and related stuff into the application -->
+		<ResourceDictionary>
+			<ResourceDictionary.MergedDictionaries>
+				<ResourceDictionary Source="NotifyIconResources.xaml" />
+			</ResourceDictionary.MergedDictionaries>
+		</ResourceDictionary>
+
+
+	</Application.Resources>
+</Application>
