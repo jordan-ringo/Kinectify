@@ -1,7 +1,8 @@
 ﻿@model IEnumerable<Kinectify.Models.UserProfile>
+@using Kinectify.Models;
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "User Profiles";
 	Layout = "~/Views/Shared/Empty_Layout.cshtml";
 
 	int ProfileCount = 0;
@@ -10,102 +11,182 @@
 	{
 		ProfileCount++;
 	}
+
+	UserProfile[] myUserProfiles = new UserProfile[3];
+	Array.Copy(ViewBag.UserProfiles, 0, myUserProfiles, 0, ViewBag.UserProfiles.Length);
+
+	
+	// Get the User Profile Image for user 1
+	string user1Image;
+
+	if (myUserProfiles[0] != null)
+	{
+		if ((myUserProfiles[0].ImageURL == null) || (myUserProfiles[0].ImageURL.Trim() == ""))
+		{
+			user1Image = "~/images/default_user_icon_520_520.png";
+		}
+		else 
+		{
+			user1Image = myUserProfiles[0].ImageURL.Trim();
+		}
+	}
+	else
+	{
+		user1Image = "~/images/new_user_520_520.png";
+	}
+
+	// Get the User Profile Image for user 2
+	string user2Image;
+
+	if (myUserProfiles[1] != null)
+	{
+		if ((myUserProfiles[1].ImageURL == null) || (myUserProfiles[1].ImageURL.Trim() == ""))
+		{
+			user2Image = "~/images/default_user_icon_520_520.png";
+		}
+		else
+		{
+			user2Image = myUserProfiles[1].ImageURL.Trim();
+		}
+	}
+	else
+	{
+		user2Image = "~/images/new_user_520_520.png";
+	}
+
+	// Get the User Profile Image for user 3
+	string user3Image;
+	
+	if (myUserProfiles[2] != null)
+	{
+		if ((myUserProfiles[2].ImageURL == null) || (myUserProfiles[2].ImageURL.Trim() == ""))
+		{
+			user3Image = "~/images/default_user_icon_520_520.png";
+		}
+		else
+		{
+			user3Image = myUserProfiles[2].ImageURL.Trim();
+		}
+	}
+	else
+	{
+		user3Image = "~/images/new_user_520_520.png";
+	}
+	
+	
 }
 
-<div class="layers accelero" data-control-method="touch" data-max-angle="1" data-speed="0.15">
+<script language="javascript">
 
+	$(document).mousemove(function () {
+		$('#myLayers').fadeIn();
+	})
+
+	function changeImage1() {
+		document.getElementById("userImage").style.visibility = 'hidden';
+		document.getElementById("userImage1").style.visibility = 'visible';
+		document.getElementById("userImage2").style.visibility = 'hidden';
+		document.getElementById("userImage3").style.visibility = 'hidden';
+	}
+	function changeImage2() {
+		document.getElementById("userImage").style.visibility = 'hidden';
+		document.getElementById("userImage1").style.visibility = 'hidden';
+		document.getElementById("userImage2").style.visibility = 'visible';
+		document.getElementById("userImage3").style.visibility = 'hidden';
+	}
+	function changeImage3() {
+		document.getElementById("userImage").style.visibility = 'hidden';
+		document.getElementById("userImage1").style.visibility = 'hidden';
+		document.getElementById("userImage2").style.visibility = 'hidden';
+		document.getElementById("userImage3").style.visibility = 'visible';
+	}
+</script>
+
+
+
+
+
+
+<div class="layers accelero" data-control-method="touch" data-max-angle="1" data-speed="0.15" style="width: 100%; height: 100%" >
+	
 	@*<div class="layer layer-4"></div>*@
 
 	@*<div class="layer layer-3"></div>*@
 
-	@*@{
-		using System.Diagnostics;
-		Process.Start(@"C:\Path\OtherApp.exe");
-	}*@
-	
-
-	<div class="row">
-		@{
-			foreach (var item in Model)
-			{
-				<div class="col-md-4">
-					<h1><a href="@Url.Action("Index", "Home", new { id = item.ID })"><span>@Html.DisplayFor(modelItem => item.UserName)</span></a></h1>
-					@Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
-					@Html.ActionLink("Delete", "Delete", new { id = item.ID })
+	<div id="myLayers" style="display:none; position: absolute;top: 50%; left: 50%;transform: translate(-50%,-50%); width:100%">
+		<div class="row">
+			<div class="col-md-1"></div>
+			<div class="col-md-5">
+				<div class="container">
+					<div class="row">
+						<img id="userImage" display="inline" style="float:right;" src="@Url.Content("~/images/empty_gray_icon_520_520.png")" alt="" />
+						<img id="userImage1" display="inline" style="position:absolute; padding-right: 15px; right:0; visibility:hidden" src="@Url.Content(@user1Image)" alt="" />
+						<img id="userImage2" display="inline" style="position:absolute; padding-right: 15px; right:0; visibility:hidden" src="@Url.Content(@user2Image)" alt="" />
+						<img id="userImage3" display="inline" style="position:absolute; padding-right: 15px; right:0; visibility:hidden" src="@Url.Content(@user3Image)" alt="" />
+					</div>
 				</div>
-			}
-
-			if (ProfileCount == 1)
-			{
-				<div class="col-md-4">
-					<h1>@Html.ActionLink("Create New", "Create")</h1>
+			</div>
+			<div div class="col-md-1"></div>
+			<div class="col-md-4">
+				<div class="row">
+					@if (myUserProfiles[0] != null)
+					{
+						<p>
+							<h1><a href="@Url.Action("Index", "Home", new { id = myUserProfiles[0].ID })"><span onmouseover="changeImage1()">@myUserProfiles[0].UserName</span></a></h1>
+							<a>
+								@Html.ActionLink("Edit", "Edit", new { id = myUserProfiles[0].ID }) |
+								@Html.ActionLink("Delete", "Delete", new { id = myUserProfiles[0].ID })
+							</a>
+						</p>
+					}
+					else
+					{
+						<h1>@Html.ActionLink("Create New", "Create")</h1>
+					}
 				</div>
-				<div class="col-md-4">
-					<h1>@Html.ActionLink("Create New", "Create")</h1>
+				<div class="row">
+					@if (myUserProfiles[1] != null)
+					{
+						<p>
+							<h1><a href="@Url.Action("Index", "Home", new { id = myUserProfiles[1].ID })"><span onmouseover="changeImage2()">@myUserProfiles[1].UserName</span></a></h1>
+							<a>
+								@Html.ActionLink("Edit", "Edit", new { id = myUserProfiles[1].ID }) |
+								@Html.ActionLink("Delete", "Delete", new { id = myUserProfiles[1].ID })
+							</a>
+						</p>
+					}
+					else
+					{
+						<h1>@Html.ActionLink("Create New", "Create")</h1>
+					}
 				</div>
-			}
-			else if (ProfileCount == 2)
-			{
-				<div class="col-md-4">
-					<h1>@Html.ActionLink("Create New", "Create")</h1>
+				<div class="row">
+					@if (myUserProfiles[2] != null)
+					{
+						<p>
+							<h1><a href="@Url.Action("Index", "Home", new { id = myUserProfiles[2].ID })"><span onmouseover="changeImage3()">@myUserProfiles[2].UserName</span></a></h1>
+							<a>
+								@Html.ActionLink("Edit", "Edit", new { id = myUserProfiles[2].ID }) |
+								@Html.ActionLink("Delete", "Delete", new { id = myUserProfiles[2].ID })
+							</a>
+						</p>
+					}
+					else
+					{
+						<p>
+							<h1><a href="@Url.Action("Create")"><span onmouseover="changeImage3()">Create New</span></a></h1>
+						</p>
+					}
 				</div>
-			}
-		}
+			</div>
+			<div div class="col-md-1"></div>
+		</div>
 	</div>
 
-	<div class="layer layer-2"></div>
 
+	@*<div class="layer layer-4"></div>*@
+	<div class="layer layer-3"></div>
+	<div class="layer layer-2"></div>
 	<div class="layer layer-1"></div>
 
 </div>
-
-
-	@*<p>
-			@Html.ActionLink("Create New", "Create")
-		</p>
-		<table class="table">
-			<tr>
-				<th>
-					@Html.DisplayNameFor(model => model.UserName)
-				</th>
-				<th>
-					@Html.DisplayNameFor(model => model.KinectName)
-				</th>
-				<th>
-					@Html.DisplayNameFor(model => model.ImageURL)
-				</th>
-				<th>
-					@Html.DisplayNameFor(model => model.VoiceURL)
-				</th>
-				<th>
-					@Html.DisplayNameFor(model => model.VoiceActive)
-				</th>
-				<th></th>
-			</tr>
-
-		@foreach (var item in Model) {
-			<tr>
-				<td>
-					@Html.DisplayFor(modelItem => item.UserName)
-				</td>
-				<td>
-					@Html.DisplayFor(modelItem => item.KinectName)
-				</td>
-				<td>
-					@Html.DisplayFor(modelItem => item.ImageURL)
-				</td>
-				<td>
-					@Html.DisplayFor(modelItem => item.VoiceURL)
-				</td>
-				<td>
-					@Html.DisplayFor(modelItem => item.VoiceActive)
-				</td>
-				<td>
-					@Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-					@Html.ActionLink("Details", "Details", new { id=item.ID }) |
-					@Html.ActionLink("Delete", "Delete", new { id=item.ID })
-				</td>
-			</tr>
-		}
-
-		</table>*@

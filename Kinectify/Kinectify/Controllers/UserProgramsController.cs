@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Kinectify.Models;
+using Kinectify.Extensions;
 
 namespace Kinectify.Controllers
 {
@@ -17,8 +18,18 @@ namespace Kinectify.Controllers
         // GET: UserPrograms
         public ActionResult Index()
         {
-            var userPrograms = db.UserPrograms.Include(u => u.UserProfile);
-            return View(userPrograms.ToList());
+			//var userPrograms = db.UserPrograms.Include(u => u.UserProfile);
+			//return View(userPrograms.ToList());
+
+			int currentUserProfileID = MySession.Current.UserProfileID;
+
+			var userPrograms = db.UserPrograms.SqlQuery(
+				"SELECT * FROM dbo.UserPrograms WHERE UserProfileID = " + currentUserProfileID +
+				"ORDER BY Name").ToList();
+
+			
+
+			return View(userPrograms);
         }
 
         // GET: UserPrograms/Details/5

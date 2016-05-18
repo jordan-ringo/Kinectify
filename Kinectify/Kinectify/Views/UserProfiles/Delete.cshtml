@@ -1,64 +1,119 @@
 ﻿@model Kinectify.Models.UserProfile
 
 @{
-    ViewBag.Title = "Delete";
+	ViewBag.Title = "Delete";
+	Layout = "~/Views/Shared/Empty_Layout.cshtml";
 }
 
-<h2>Delete</h2>
+<script language="javascript">
 
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>UserProfile</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.UserName)
-        </dt>
+	$(document).mousemove(function () {
+		$('#myLayers').fadeIn();
+	})
 
-        <dd>
-            @Html.DisplayFor(model => model.UserName)
-        </dd>
+</script>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.KinectName)
-        </dt>
+<div class="layers accelero" data-control-method="touch" data-max-angle="1" data-speed="0.15" style="width: 100%; height: 100%">
 
-        <dd>
-            @Html.DisplayFor(model => model.KinectName)
-        </dd>
+	<div id="myLayers" style="display:none; position: absolute;top: 50%; left: 50%;transform: translate(-50%,-50%); width:100%">
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ImageURL)
-        </dt>
+		<div class="row">
+			<div class="col-md-1"></div>
+			<div class="col-md-2">
+				<div class="container">
+					<div class="row">
+						<a class="btn btn-default" style="width:150px; background:none; float:left;" href='@Url.Action("Index" , "UserProfiles" )'>
+							USER SELECT@*<img src="@Url.Content("~/images/back_arrow_128.png")" alt="User Profile Select">*@
+						</a>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="container">
+					<div class="row">
 
-        <dd>
-            @Html.DisplayFor(model => model.ImageURL)
-        </dd>
+						@*start of form-----------------------------------------------------------------------*@
+						<h1>Delete User Profile</h1>
+						<div>
+							<hr />
+							<dl class="dl-horizontal">
+								<dt>
+									@Html.DisplayNameFor(model => model.UserName)
+								</dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.VoiceURL)
-        </dt>
+								<dd>
+									@Html.DisplayFor(model => model.UserName)
+								</dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.VoiceURL)
-        </dd>
+								<dt>
+									@Html.DisplayNameFor(model => model.KinectName)
+								</dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.VoiceActive)
-        </dt>
+								<dd>
+									@Html.DisplayFor(model => model.KinectName)
+								</dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.VoiceActive)
-        </dd>
+								<dt>
+									@Html.DisplayNameFor(model => model.ImageURL)
+								</dt>
 
-    </dl>
+								<dd>
+									@Html.DisplayFor(model => model.ImageURL)
+								</dd>
 
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
+								@*<dt>
+									@Html.DisplayNameFor(model => model.VoiceURL)
+								</dt>
 
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
-        </div>
-    }
+								<dd>
+									@Html.DisplayFor(model => model.VoiceURL)
+								</dd>
+
+								<dt>
+									@Html.DisplayNameFor(model => model.VoiceActive)
+								</dt>
+
+								<dd>
+									@Html.DisplayFor(model => model.VoiceActive)
+								</dd>*@
+
+							</dl>
+							<hr />
+							<h3>Are you sure you want to delete this?</h3>
+							@using (Html.BeginForm())
+							{
+								@Html.AntiForgeryToken()
+
+								<div class="form-actions no-color">
+									<input type="submit" value="Delete" class="btn btn-default" />
+								</div>
+							}
+						</div>
+
+
+						@*end of form-----------------------------------------------------------------------*@
+					</div>
+				</div>
+			</div>
+			@*end of middle row*@
+			<div class="col-md-2">
+				<div class="container">
+					<div class="row">
+						<a class="btn btn-default" style="width:150px; background:none; float:right;" onclick="window.open('', '_self', ''); window.close();">
+							CLOSE@*<img src="@Url.Content("~/images/close_x_128.png")" alt="User Profile Select">*@
+						</a>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-1"></div>
+		</div>
+
+
+	</div>
+
+	@*<div class="layer layer-4"></div>*@
+	<div class="layer layer-3"></div>
+	<div class="layer layer-2"></div>
+	<div class="layer layer-1"></div>
+
 </div>

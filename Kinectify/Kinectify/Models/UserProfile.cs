@@ -11,16 +11,19 @@ namespace Kinectify.Models
 	{
 		public int ID { get; set; }
 
+		[DisplayName("User Name")]
 		[Required]
 		[MaxLength(32)]
 		[StringLength(32, MinimumLength = 3)]
 		public string UserName { get; set; }
 
+		[DisplayName("Kinect Name")]
 		[DefaultValue("kinect")]
 		[MaxLength(32)]
 		[StringLength(32, MinimumLength = 3)]
 		public string KinectName { get; set; }
 
+		[DisplayName("Image URL")]
 		[MaxLength(2083)]
 		[StringLength(2083)]
 		public string ImageURL { get; set; }

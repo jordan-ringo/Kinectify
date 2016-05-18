@@ -1,31 +1,274 @@
-﻿@{
-    ViewBag.Title = "Home Page";
+﻿@using Kinectify.Models;
+
+@{
+	
+	ViewBag.Title = "Home Page";
+	Layout = "~/Views/Shared/Empty_Layout.cshtml";
+
+	UserProgram[] myPrograms = new UserProgram[6] ;
+	Array.Copy(ViewBag.UserPrograms, 0, myPrograms, 0, ViewBag.UserPrograms.Length);
+
+	VoiceCommand[] myVoiceCommands = new VoiceCommand[6];
+	Array.Copy(ViewBag.VoiceCommands, 0, myVoiceCommands, 0, ViewBag.VoiceCommands.Length);
+
+
+
+	// Get the User Profile Image
+	string userImage;
+
+	if (ViewBag.UserProfile != null)
+	{
+		if ((ViewBag.UserProfile.ImageURL == null) || (ViewBag.UserProfile.ImageURL.Trim() == ""))
+		{
+			userImage = "~/images/default_user_icon_520_520.png";
+		}
+		else
+		{
+			userImage = ViewBag.UserProfile.ImageURL.Trim();
+		}
+	}
+	else
+	{
+		userImage = "~/images/new_user_520_520.png";
+	}
+	
 }
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="http://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+<script language="javascript">
+
+	$(document).mousemove(function () {
+		$('#myLayers').fadeIn();
+	})
+
+</script>
+
+
+
+
+<div class="layers accelero" data-control-method="touch" data-max-angle="1" data-speed="0.15" style="width: 100%; height: 100%">
+
+	<div id="myLayers" style="display:none; position: absolute;top: 50%; left: 50%;transform: translate(-50%,-50%); width:100%">
+		@*---COLUMN 1 START----------------------------------------------------------------------*@
+
+		<div class="row">
+			<div class="col-md-1"></div>
+			<div class="col-md-3">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-6">
+							<div style="margin-bottom:60px;">
+								<a class="btn btn-default" style="width:150px; background:none; position:absolute; left:0;" href='@Url.Action("Index" , "UserProfiles" )'>
+									USER SELECT@*<img src="@Url.Content("~/images/back_arrow_128.png")" alt="User Profile Select">*@
+								</a>
+							</div>
+						</div>
+						<div class="col-md-6"></div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4"></div>
+			<div class="col-md-3">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-6"></div>
+						<div class="col-md-6">
+							<a class="btn btn-default" style="width:150px; background:none; position:absolute; left:0; margin-bottom:15px;" onclick="window.open('', '_self', ''); window.close();">
+								CLOSE@*<img src="@Url.Content("~/images/close_x_128.png")" alt="User Profile Select">*@
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-1"></div>
+		</div>
+		<div class="row">
+			<div class="col-md-1"></div>
+			<div class="col-md-3">
+
+				<h1>Programs</h1>
+				<div class="container">
+					<div class="row">
+						@for (int index = 0; index < 2; ++index)
+						{
+							<div class="col-md-6">
+								<div style="width:150px;height:150px;margin-bottom:15px">
+									@if (myPrograms[index] != null)
+									{
+										<a href="@Url.Action("Edit", "UserPrograms", new { id = myPrograms[index].ID })">
+											@myPrograms[index].Name
+											<img src="@Url.Content("~/images/gray_icon_150_150.png")" alt=""
+												 style="position:absolute; left: 0px; top: 0px; z-index: -1;" />
+										</a>
+									}
+									else
+									{
+										<img src="@Url.Content("~/images/empty_gray_icon_150_150.png")" alt="" style="position:absolute; left: 0px; top: 0px; z-index: -1;" />
+									}
+								</div>
+							</div>
+						}
+					</div>
+					<div class="row">
+						@for (int index = 2; index < 4; ++index)
+						{
+							<div class="col-md-6">
+								<div style="width:150px;height:150px;margin-bottom:15px">
+									@if (myPrograms[index] != null)
+									{
+										<a href="@Url.Action("Edit", "UserPrograms", new { id = myPrograms[index].ID })">
+											@myPrograms[index].Name
+											<img src="@Url.Content("~/images/gray_icon_150_150.png")" alt=""
+												 style="position:absolute; left: 0px; top: 0px; z-index: -1;" />
+										</a>
+									}
+									else
+									{
+										<img src="@Url.Content("~/images/empty_gray_icon_150_150.png")" alt="" style="position:absolute; left: 0px; top: 0px; z-index: -1;" />
+									}
+								</div>
+							</div>
+						}
+					</div>
+					<div class="row">
+						@for (int index = 3; index < 5; ++index)
+						{
+							<div class="col-md-6">
+								<div style="width:150px;height:150px;margin-bottom:15px">
+									@if (myPrograms[index] != null)
+									{
+										<a href="@Url.Action("Edit", "UserPrograms", new { id = myPrograms[index].ID })">
+											@myPrograms[index].Name
+											<img src="@Url.Content("~/images/gray_icon_150_150.png")" alt=""
+												 style="position:absolute; left: 0px; top: 0px; z-index: -1;" />
+										</a>
+									}
+									else
+									{
+										<img src="@Url.Content("~/images/empty_gray_icon_150_150.png")" alt="" style="position:absolute; left: 0px; top: 0px; z-index: -1;" />
+									}
+								</div>
+							</div>
+						}
+					</div>
+					<div class="row">
+						<div class="col-md-6">
+							<p><a class="btn btn-default" style="position:absolute; left:0; width:150px; background:none;" href='@Url.Action("Index",  "UserPrograms")'>View All &raquo;</a></p>
+						</div>
+						<div class="col-md-6">
+							<p><a class="btn btn-default" style="position:absolute; left:0; width:150px; background:none;" href='@Url.Action("Create",  "UserPrograms")'>Add New &raquo;</a></p>
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+			@*---COLUMN 2 START----------------------------------------------------------------------*@
+
+			<div class="col-md-4">
+				<h1 style="text-align:center">@ViewBag.UserProfile.UserName</h1>
+
+				<img style="max-height:100%; max-width:100%" src="@Url.Content(@userImage)" alt="" />
+
+				<div class="row">
+					<h2 style="text-align:center">Kinect Nickname: @ViewBag.UserProfile.KinectName</h2>
+				</div>
+
+				<p><a class="btn btn-default" href='@Url.Action("Edit", "UserProfiles", new { id = ViewBag.UserProfile.ID })'>EDIT PROFILE</a></p>
+
+			</div>
+
+			@*---COLUMN 3 START----------------------------------------------------------------------*@
+
+			<div class="col-md-3">
+
+				<h1>Voice Commands</h1>
+				<div class="container">
+					<div class="row">
+						@for (int index = 0; index < 2; ++index)
+						{
+							<div class="col-md-6">
+								<div style="width:150px;height:150px;margin-bottom:15px">
+									@if (myVoiceCommands[index] != null)
+									{
+										<a href="@Url.Action("Edit", "VoiceCommands", new { id = myVoiceCommands[index].ID })">
+											@myVoiceCommands[index].Phrase
+											<img src="@Url.Content("~/images/gray_icon_150_150.png")" alt=""
+												 style="position:absolute; left: 0px; top: 0px; z-index: -1;" />
+										</a>
+									}
+									else
+									{
+										<img src="@Url.Content("~/images/empty_gray_icon_150_150.png")" alt="" style="position:absolute; left: 0px; top: 0px; z-index: -1;" />
+									}
+								</div>
+							</div>
+						}
+					</div>
+					<div class="row">
+						@for (int index = 2; index < 4; ++index)
+						{
+							<div class="col-md-6">
+								<div style="width:150px;height:150px;margin-bottom:15px">
+									@if (myVoiceCommands[index] != null)
+									{
+										<a href="@Url.Action("Edit", "VoiceCommands", new { id = myVoiceCommands[index].ID })">
+											@myVoiceCommands[index].Phrase
+											<img src="@Url.Content("~/images/gray_icon_150_150.png")" alt=""
+												 style="position:absolute; left: 0px; top: 0px; z-index: -1;" />
+										</a>
+									}
+									else
+									{
+										<img src="@Url.Content("~/images/empty_gray_icon_150_150.png")" alt="" style="position:absolute; left: 0px; top: 0px; z-index: -1;" />
+									}
+								</div>
+							</div>
+						}
+					</div>
+					<div class="row">
+						@for (int index = 3; index < 5; ++index)
+						{
+							<div class="col-md-6">
+								<div style="width:150px;height:150px;margin-bottom:15px">
+									@if (myVoiceCommands[index] != null)
+									{
+										<a href="@Url.Action("Details", "VoiceCommands", new { id = myVoiceCommands[index].ID })">
+											@myVoiceCommands[index].Phrase
+											<img src="@Url.Content("~/images/gray_icon_150_150.png")" alt=""
+												 style="position:absolute; left: 0px; top: 0px; z-index: -1;" />
+										</a>
+									}
+									else
+									{
+										<img src="@Url.Content("~/images/empty_gray_icon_150_150.png")" alt="" style="position:absolute; left: 0px; top: 0px; z-index: -1;" />
+									}
+								</div>
+							</div>
+						}
+					</div>
+					<div class="row">
+						<div class="col-md-6">
+							<p><a class="btn btn-default" style="position:absolute; left:0; width:150px; background:none;" href='@Url.Action("Index",  "VoiceCommands")'>View All &raquo;</a></p>
+						</div>
+						<div class="col-md-6">
+							<p><a class="btn btn-default" style="position:absolute; left:0; width:150px; background:none;" href='@Url.Action("Create",  "VoiceCommands")'>Add New &raquo;</a></p>
+						</div>
+					</div>
+				</div>
+
+			</div>
+			<div class="col-md-1"></div>
+		</div>
+	</div>
+	
+	@*<div class="layer layer-4"></div>*@
+
+	<div class="layer layer-3"></div>
+
+	<div class="layer layer-2"></div>
+
+	@*<div class="layer layer-1"></div>*@
+
 </div>
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
-</div>
+@*<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>*@

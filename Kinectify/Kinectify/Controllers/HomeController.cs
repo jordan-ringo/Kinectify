@@ -31,11 +31,12 @@ namespace Kinectify.Controllers
 
 
 			ViewBag.UserPrograms = db.UserPrograms.SqlQuery(
-				"SELECT * FROM dbo.UserPrograms WHERE UserProfileID = " + currentUserProfileID +
-				"ORDER BY DateLastUpdated").ToList();
+				"SELECT TOP 6 * FROM dbo.UserPrograms WHERE UserProfileID = " + currentUserProfileID +
+				"ORDER BY DateLastUpdated").ToArray();
 
 			ViewBag.VoiceCommands = db.VoiceCommands.SqlQuery(
-				"SELECT * FROM dbo.VoiceCommands WHERE UserProfileID = " + currentUserProfileID).ToList();
+				"SELECT TOP 6 * FROM dbo.VoiceCommands WHERE UserProfileID = " + currentUserProfileID +
+				"ORDER BY DateLastUpdated").ToArray();
 
 			return View();
 		}

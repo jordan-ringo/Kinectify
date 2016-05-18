@@ -17,6 +17,7 @@ namespace Kinectify.Models
     
         public KinectifyContext() : base("name=KinectifyContext")
         {
+			Configuration.ProxyCreationEnabled = false;
         }
 
 		public System.Data.Entity.DbSet<Kinectify.Models.UserProfile> UserProfiles { get; set; }

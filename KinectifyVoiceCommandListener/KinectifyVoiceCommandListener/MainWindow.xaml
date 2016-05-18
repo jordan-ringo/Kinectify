@@ -3,13 +3,65 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Kinectify" Height="350" Width="525"
 		Loaded="WindowLoaded" Closing="WindowClosing" 
-		ShowInTaskbar="False" ResizeMode="NoResize"
-		WindowStyle="None" Background="Gray">
-		<!--Loaded="WindowLoaded" Closing="WindowClosing">-->
-	<!--WindowState="Minimized"   Title="MainWindow">-->
-    <Grid>
-		<Label Content="kinectify" HorizontalAlignment="Center"  VerticalAlignment="center" FontSize="48" Foreground="White"/>
-		<Button Content="LAUNCH" HorizontalAlignment="center" Margin="0,190,0,0" VerticalAlignment="center" Width="75" Background="Gray" Click="Button_Click"/>
+		 ResizeMode="NoResize"
+		WindowStyle="None" Background="#625D5D"
+		Style="{StaticResource MyWindowStyle}">
+	<!--Loaded="WindowLoaded" Closing="WindowClosing">-->
+	<!--WindowState="Minimized"   Title="MainWindow" ShowInTaskbar="False">-->
+
+	<Grid>
+		<Label Content="kinectify" HorizontalAlignment="Center"  VerticalAlignment="Top" FontSize="48" Foreground="White"/>
+	
+		<Button Name="imgClose"
+				Margin="0,5,5,0"
+				HorizontalAlignment="Right"
+				VerticalAlignment="Top"
+				BorderBrush="Transparent"
+				ToolTip="Close Kinectify"
+				Click="btnClose_Click"
+				Width="16"
+				Height="16">
+			<Button.Background>
+				<ImageBrush ImageSource="/Images/close.png" Stretch="none"/>
+			</Button.Background>
+		</Button>
+		<Button Name="btnMinimize"
+				Margin="0,5,30,0"
+				VerticalAlignment="Top"
+				HorizontalAlignment="Right"
+				BorderBrush="Transparent"
+				ToolTip="Minimize Kinectify"
+				Click="btnMinimize_Click"
+				Width="16"
+				Height="16">
+			<Button.Background>
+				<ImageBrush ImageSource="/Images/minimize.png" Stretch="none"/>
+			</Button.Background>
+		</Button>
+
+
+
+		<Image Name="KinectIcon" Source="Images/small-kinect-icon-black.png" HorizontalAlignment="Left" Height="30" Margin="50,90,0,0" VerticalAlignment="Top" Width="80"/>
+
+		<Label Name="RecentVoiceCommand" Content="listening" Margin="201,90,50.333,230" Height="30"/>
+
+		<Button Name="User1Button" Content="New User" HorizontalAlignment="Center" Margin="-300,125,0,0" VerticalAlignment="Top" Width="125" Height="125" Background="#625D5D" Click="User1Button_Click"/>
+		<Button Name="User2Button" Content="New User" HorizontalAlignment="Center" Margin="0,125,0,0" VerticalAlignment="Top" Width="125" Height="125" Background="#625D5D" Click="User2Button_Click"/>
+		<Button Name="User3Button" Content="New User" HorizontalAlignment="Center" Margin="300,125,0,0" VerticalAlignment="Top" Width="125" Height="125" Background="#625D5D" Click="User3Button_Click"/>
+
+		<Label Content="Kinect Name:" HorizontalAlignment="Center" Margin="51,250,350.333,0" VerticalAlignment="Top" Width="124" HorizontalContentAlignment="Center"/>
+		<Label Name="User1KinectName" Content="Kinect" HorizontalAlignment="Center" Margin="51,265,350.333,0" VerticalAlignment="Top" Width="124" HorizontalContentAlignment="Center"/>
+		<Label Content="Kinect Name:" HorizontalAlignment="Center" Margin="200,250,201.333,0" VerticalAlignment="Top" Width="124" HorizontalContentAlignment="Center"/>
+		<Label Name="User2KinectName" Content="Kinect" HorizontalAlignment="Center" Margin="200,265,201.333,0" VerticalAlignment="Top" Width="124" HorizontalContentAlignment="Center"/>
+		<Label Content="Kinect Name:" HorizontalAlignment="Center" Margin="350,250,51.333,0" VerticalAlignment="Top" Width="124" HorizontalContentAlignment="Center"/>
+		<Label Name="User3KinectName" Content="Kinect" HorizontalAlignment="Center" Margin="350,265,51.333,0" VerticalAlignment="Top" Width="124" HorizontalContentAlignment="Center"/>
+
+
+
+		<Button Content="LAUNCH EDITOR" HorizontalAlignment="center" Margin="200,310,200,0" VerticalAlignment="Top" Width="124" Background="#625D5D" Foreground="White" Click="Button_Click" Height="30"/>
+		<CheckBox Name="VoiceEnabledCheckBox" Content="Voice Enabled" HorizontalAlignment="Center" Margin="50,325,351,0" VerticalAlignment="Top" Width="124" Checked="VoiceEnabledCheckBox_Checked" Unchecked="VoiceEnabledCheckBox_Unchecked"/>
+		<CheckBox Name="UseKinectNameCheckBox" Content="Use Kinect Name" HorizontalAlignment="Center" Margin="350,325,51,10" Checked="UseKinectNameCheckBox_Checked" Unchecked="UseKinectNameCheckBox_Unchecked" Width="124"/>
 
 	</Grid>
 </Window>
+	

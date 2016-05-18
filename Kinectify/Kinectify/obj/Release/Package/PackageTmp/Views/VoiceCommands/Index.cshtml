@@ -1,57 +1,121 @@
 ﻿@model IEnumerable<Kinectify.Models.VoiceCommand>
 
 @{
-    ViewBag.Title = "Index";
+	ViewBag.Title = "Index";
+	Layout = "~/Views/Shared/Empty_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<script language="javascript">
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.UserProfile.UserName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.UserProgram.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Keyword)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Phrase)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Action)
-        </th>
-        <th></th>
-    </tr>
+	$(document).mousemove(function () {
+		$('#myLayers').fadeIn();
+	})
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.UserProfile.UserName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.UserProgram.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Keyword)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Phrase)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Action)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
-        </td>
-    </tr>
-}
+</script>
 
-</table>
+<div class="layers accelero" data-control-method="touch" data-max-angle="1" data-speed="0.15" style="width: 100%; height: 100%">
+
+	<div id="myLayers" style="display:none; position: absolute;top: 50%; left: 50%;transform: translate(-50%,-50%); width:100%">
+
+		<div class="row">
+			<div class="col-md-1"></div>
+			<div class="col-md-2">
+				<div class="container">
+					<div class="row">
+						<a class="btn btn-default" style="width:150px; background:none; float:left;" href='@Url.Action("Index" , "Home" )'>
+							USER SELECT@*<img src="@Url.Content("~/images/back_arrow_128.png")" alt="User Profile Select">*@
+						</a>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="container">
+					<div class="row">
+
+						@*start of form-----------------------------------------------------------------------*@
+						<h1>Voice Commands</h1>
+
+						<p>
+							@Html.ActionLink("Create New", "Create")
+						</p>
+						<table class="table">
+							<tr>
+								<th>
+									@Html.DisplayNameFor(model => model.UserProfile.UserName)
+								</th>
+								<th>
+									@Html.DisplayNameFor(model => model.UserProgram.Name)
+								</th>
+								<th>
+									@Html.DisplayNameFor(model => model.Keyword)
+								</th>
+								<th>
+									@Html.DisplayNameFor(model => model.Phrase)
+								</th>
+								<th>
+									@Html.DisplayNameFor(model => model.Action)
+								</th>
+								<th>
+									@Html.DisplayNameFor(model => model.DateLastUpdated)
+								</th>
+								<th></th>
+							</tr>
+
+							@foreach (var item in Model)
+							{
+								<tr>
+									<td>
+										@Html.DisplayFor(modelItem => item.UserProfile.UserName)
+									</td>
+									<td>
+										@Html.DisplayFor(modelItem => item.UserProgram.Name)
+									</td>
+									<td>
+										@Html.DisplayFor(modelItem => item.Keyword)
+									</td>
+									<td>
+										@Html.DisplayFor(modelItem => item.Phrase)
+									</td>
+									<td>
+										@Html.DisplayFor(modelItem => item.Action)
+									</td>
+									<td>
+										@Html.DisplayFor(modelItem => item.DateLastUpdated)
+									</td>
+									<td>
+										@Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+										@Html.ActionLink("Details", "Details", new { id = item.ID }) |
+										@Html.ActionLink("Delete", "Delete", new { id = item.ID })
+									</td>
+								</tr>
+							}
+
+						</table>
+
+
+						@*end of form-----------------------------------------------------------------------*@
+					</div>
+				</div>
+			</div>
+			@*end of middle row*@
+			<div class="col-md-2">
+				<div class="container">
+					<div class="row">
+						<a class="btn btn-default" style="width:150px; background:none; float:right;" onclick="window.open('', '_self', ''); window.close();">
+							CLOSE@*<img src="@Url.Content("~/images/close_x_128.png")" alt="User Profile Select">*@
+						</a>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-1"></div>
+		</div>
+
+
+	</div>
+
+	@*<div class="layer layer-4"></div>*@
+	<div class="layer layer-3"></div>
+	<div class="layer layer-2"></div>
+	<div class="layer layer-1"></div>
+
+</div>

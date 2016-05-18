@@ -26,9 +26,16 @@ namespace Kinectify.Models
 		[StringLength(128, MinimumLength = 3)]
 		public string Phrase { get; set; }
 
-		[MaxLength(128)]
-		[StringLength(128, MinimumLength = 3)]
+		[MaxLength(1024)]
+		[StringLength(1024, MinimumLength = 1)]
 		public string Action { get; set; }
+
+		private DateTime _date = DateTime.Now;
+		public DateTime DateLastUpdated
+		{
+			get { return _date; }
+			set { _date = value; }
+		}
 
 
 		public virtual UserProfile UserProfile { get; set; }

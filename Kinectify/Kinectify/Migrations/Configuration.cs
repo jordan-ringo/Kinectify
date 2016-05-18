@@ -33,16 +33,18 @@ namespace Kinectify.Migrations
 				new UserProfile
 				{
 					UserName = "III RINGO III",
+					KinectName = "Computer"
 				},
 				new UserProfile
 				{
 					UserName = "Sephy79",
+					KinectName = "Kinectify"
 				}
 			);
 
 
 			context.UserPrograms.AddOrUpdate
-			(p => p.UserProfileID,
+			(p => p.Name,
 				new UserProgram
 				{
 					UserProfileID = 1,
@@ -60,6 +62,12 @@ namespace Kinectify.Migrations
 					UserProfileID = 1,
 					Name = "Paint",
 					DateLastUpdated = DateTime.Parse("2015-08-01")
+				},
+				new UserProgram
+				{
+					UserProfileID = 1,
+					Name = "Windows Media Player",
+					DateLastUpdated = DateTime.Parse("2016-03-01")
 				},
 				new UserProgram
 				{
@@ -81,10 +89,98 @@ namespace Kinectify.Migrations
 				new VoiceCommand
 				{
 					UserProfileID = 1,
-					UserProgramID = 1,
+					UserProgramID = 2,
 					Keyword = "OPEN_NOTEPAD",
 					Phrase = "open notepad",
-					Action = "^{ESC}notepad~"
+					Action = "^{ESC}notepad{ENTER}"
+				},
+				new VoiceCommand
+				{
+					UserProfileID = 1,
+					UserProgramID = 4,
+					Keyword = "PLAY_MY_MUSIC_WMP",
+					Phrase = "play my music",
+					Action = "^{ESC}windows media player{ENTER}music{TAB}{ENTER}"
+				},
+				new VoiceCommand
+				{
+					UserProfileID = 1,
+					UserProgramID = 4,
+					Keyword = "STOP_SONG",
+					Phrase = "stop song",
+					Action = "^s"
+				},
+				new VoiceCommand
+				{
+					UserProfileID = 1,
+					UserProgramID = 4,
+					Keyword = "PLAY_SONG",
+					Phrase = "play song",
+					Action = "^p"
+				},
+				new VoiceCommand
+				{
+					UserProfileID = 1,
+					UserProgramID = 1,
+					Keyword = "EXIT_PROGRAM",
+					Phrase = "exit program",
+					Action = "%{F4}"
+				},
+				new VoiceCommand
+				{
+					UserProfileID = 1,
+					UserProgramID = 1,
+					Keyword = "DOWN_ARROW",
+					Phrase = "down arrow",
+					Action = "{DOWN}"
+				},
+				new VoiceCommand
+				{
+					UserProfileID = 1,
+					UserProgramID = 1,
+					Keyword = "UP_ARROW",
+					Phrase = "up arrow",
+					Action = "{UP}"
+				},
+				new VoiceCommand
+				{
+					UserProfileID = 1,
+					UserProgramID = 1,
+					Keyword = "RIGHT_ARROW",
+					Phrase = "right arrow",
+					Action = "{RIGHT}"
+				},
+				new VoiceCommand
+				{
+					UserProfileID = 1,
+					UserProgramID = 1,
+					Keyword = "LEFT_ARROW",
+					Phrase = "left arrow",
+					Action = "{LEFT}"
+				},
+				new VoiceCommand
+				{
+					UserProfileID = 1,
+					UserProgramID = 1,
+					Keyword = "VOLUME_DOWN",
+					Phrase = "volume down",
+					Action = "^{ESC}adjust system volume{ENTER}{{DOWN} 5}{ESC}"
+				},
+				new VoiceCommand
+				{
+					UserProfileID = 1,
+					UserProgramID = 1,
+					Keyword = "VOLUME_UP",
+					Phrase = "volume up",
+					Action = "^{ESC}adjust system volume{ENTER}{{UP} 5}{ESC}"
+				},
+				new VoiceCommand
+				{
+					UserProfileID = 1,
+					UserProgramID = 1,
+					Keyword = "ENTER_KEY",
+					Phrase = "press enter",
+					Action = "{ENTER}"
 				}
 			);
 

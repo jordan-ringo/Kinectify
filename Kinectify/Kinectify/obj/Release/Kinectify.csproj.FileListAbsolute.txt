@@ -30,3 +30,10 @@ C:\Users\Jordan\Documents\OIT Classes\Senior Project Year 2\Kinectify\Kinectify\
 C:\Users\Jordan\Documents\OIT Classes\Senior Project Year 2\Kinectify\Kinectify\obj\Release\Kinectify.csprojResolveAssemblyReference.cache
 C:\Users\Jordan\Documents\OIT Classes\Senior Project Year 2\Kinectify\Kinectify\obj\Release\Kinectify.Migrations.Initial.resources
 C:\Users\Jordan\Documents\OIT Classes\Senior Project Year 2\Kinectify\Kinectify\obj\Release\Kinectify.csproj.GenerateResource.Cache
+C:\Users\Jordan\Documents\OIT Classes\Senior Project Year 2\Kinectify\Kinectify\bin\System.Net.Http.Formatting.dll
+C:\Users\Jordan\Documents\OIT Classes\Senior Project Year 2\Kinectify\Kinectify\bin\System.Web.Http.dll
+C:\Users\Jordan\Documents\OIT Classes\Senior Project Year 2\Kinectify\Kinectify\bin\System.Web.Http.WebHost.dll
+C:\Users\Jordan\Documents\OIT Classes\Senior Project Year 2\Kinectify\Kinectify\bin\System.Net.Http.Formatting.xml
+C:\Users\Jordan\Documents\OIT Classes\Senior Project Year 2\Kinectify\Kinectify\bin\System.Web.Http.xml
+C:\Users\Jordan\Documents\OIT Classes\Senior Project Year 2\Kinectify\Kinectify\bin\System.Web.Http.WebHost.xml
+C:\Users\Jordan\Documents\OIT Classes\Senior Project Year 2\Kinectify\Kinectify\obj\Release\Kinectify.Migrations.testName.resources

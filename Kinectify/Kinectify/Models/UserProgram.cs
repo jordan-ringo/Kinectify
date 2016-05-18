@@ -16,10 +16,12 @@ namespace Kinectify.Models
 		[ForeignKey("UserProfile")]
 		public int UserProfileID { get; set; }
 
+		[DisplayName("Program")]
 		[MaxLength(128)]
 		[StringLength(128, MinimumLength = 3)]
 		public string Name { get; set; }
 
+		[DisplayName("Image URL")]
 		[MaxLength(2083)]
 		[StringLength(2083)]
 		public string ImageURL { get; set; }

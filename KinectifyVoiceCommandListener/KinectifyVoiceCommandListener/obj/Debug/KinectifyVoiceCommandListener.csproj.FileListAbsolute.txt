@@ -20,3 +20,6 @@ C:\Users\Jordan\Documents\OIT Classes\Senior Project Year 2\KinectifyVoiceComman
 C:\Users\Jordan\Documents\OIT Classes\Senior Project Year 2\KinectifyVoiceCommandListener\KinectifyVoiceCommandListener\bin\Debug\Hardcodet.Wpf.TaskbarNotification.pdb
 C:\Users\Jordan\Documents\OIT Classes\Senior Project Year 2\KinectifyVoiceCommandListener\KinectifyVoiceCommandListener\bin\Debug\Hardcodet.Wpf.TaskbarNotification.xml
 C:\Users\Jordan\Documents\OIT Classes\Senior Project Year 2\KinectifyVoiceCommandListener\KinectifyVoiceCommandListener\obj\Debug\NotifyIconResources.baml
+C:\Users\Jordan\Documents\OIT Classes\Senior Project Year 2\KinectifyVoiceCommandListener\KinectifyVoiceCommandListener\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Jordan\Documents\OIT Classes\Senior Project Year 2\KinectifyVoiceCommandListener\KinectifyVoiceCommandListener\obj\Debug\FancyBalloon.baml
+C:\Users\Jordan\Documents\OIT Classes\Senior Project Year 2\KinectifyVoiceCommandListener\KinectifyVoiceCommandListener\obj\Debug\FancyBalloon.g.cs

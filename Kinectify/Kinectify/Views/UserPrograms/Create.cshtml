@@ -1,64 +1,122 @@
 ﻿@model Kinectify.Models.UserProgram
 
 @{
-    ViewBag.Title = "Create";
+	ViewBag.Title = "Create";
+	Layout = "~/Views/Shared/Empty_Layout.cshtml";
 }
 
-<h2>Create</h2>
+<script language="javascript">
+
+	$(document).mousemove(function () {
+		$('#myLayers').fadeIn();
+	})
+
+</script>
+
+<div class="layers accelero" data-control-method="touch" data-max-angle="1" data-speed="0.15" style="width: 100%; height: 100%">
+
+	<div id="myLayers" style="display:none; position: absolute;top: 50%; left: 50%;transform: translate(-50%,-50%); width:100%">
+
+		<div class="row">
+			<div class="col-md-1"></div>
+			<div class="col-md-2">
+				<div class="container">
+					<div class="row">
+						<a class="btn btn-default" style="width:150px; background:none; float:left;" href='@Url.Action("Index", "Home")'>
+							HOME@*<img src="@Url.Content("~/images/back_arrow_128.png")" alt="User Profile Select">*@
+						</a>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="container">
+					<div class="row">
+
+						@*start of form-----------------------------------------------------------------------*@
+						<h1>Add New Program</h1>
 
 
-@using (Html.BeginForm()) 
-{
-    @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>UserProgram</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.UserProfileID, "UserProfileID", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("UserProfileID", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.UserProfileID, "", new { @class = "text-danger" })
-            </div>
-        </div>
+						@using (Html.BeginForm())
+						{
+							@Html.AntiForgeryToken()
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
-            </div>
-        </div>
+							<div class="form-horizontal">
+								
+								<hr />
+								@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+								<div class="form-group">
+									@Html.LabelFor(model => model.UserProfileID, "UserProfileID", htmlAttributes: new { @class = "control-label col-md-2" })
+									<div class="col-md-10">
+										@Html.DropDownList("UserProfileID", null, htmlAttributes: new { @class = "form-control" })
+										@Html.ValidationMessageFor(model => model.UserProfileID, "", new { @class = "text-danger" })
+									</div>
+								</div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.ImageURL, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.ImageURL, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.ImageURL, "", new { @class = "text-danger" })
-            </div>
-        </div>
+								<div class="form-group">
+									@Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+									<div class="col-md-10">
+										@Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+										@Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+									</div>
+								</div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.DateLastUpdated, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.DateLastUpdated, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.DateLastUpdated, "", new { @class = "text-danger" })
-            </div>
-        </div>
+								<div class="form-group">
+									@Html.LabelFor(model => model.ImageURL, htmlAttributes: new { @class = "control-label col-md-2" })
+									<div class="col-md-10">
+										@Html.EditorFor(model => model.ImageURL, new { htmlAttributes = new { @class = "form-control" } })
+										@Html.ValidationMessageFor(model => model.ImageURL, "", new { @class = "text-danger" })
+									</div>
+								</div>
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
-            </div>
-        </div>
-    </div>
-}
+								<div class="form-group">
+									@Html.LabelFor(model => model.DateLastUpdated, htmlAttributes: new { @class = "control-label col-md-2" })
+									<div class="col-md-10">
+										@Html.EditorFor(model => model.DateLastUpdated, new { htmlAttributes = new { @class = "form-control" } })
+										@Html.ValidationMessageFor(model => model.DateLastUpdated, "", new { @class = "text-danger" })
+									</div>
+								</div>
+								<hr />
+								<div class="form-group">
+									<div class="col-md-offset-2 col-md-10">
+										<input type="submit" value="Create" class="btn btn-default" />
+									</div>
+								</div>
+							</div>
+						}
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
+						<div>
+							@Html.ActionLink("Back to List", "Index")
+						</div>
+
+
+						@*end of form-----------------------------------------------------------------------*@
+					</div>
+				</div>
+			</div>
+			@*end of middle row*@
+			<div class="col-md-2">
+				<div class="container">
+					<div class="row">
+						<a class="btn btn-default" style="width:150px; background:none; float:right;" onclick="window.open('', '_self', ''); window.close();">
+							CLOSE@*<img src="@Url.Content("~/images/close_x_128.png")" alt="User Profile Select">*@
+						</a>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-1"></div>
+		</div>
+
+
+	</div>
+
+	@*<div class="layer layer-4"></div>*@
+	<div class="layer layer-3"></div>
+	<div class="layer layer-2"></div>
+	<div class="layer layer-1"></div>
+
 </div>
 
+
 @section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
+	@Scripts.Render("~/bundles/jqueryval")
 }

@@ -17,6 +17,9 @@ namespace Kinectify.Controllers
         // GET: UserProfiles
         public ActionResult Index()
         {
+			ViewBag.UserProfiles = db.UserProfiles.SqlQuery(
+				"SELECT TOP 3 * FROM dbo.UserProfiles").ToArray();
+
             return View(db.UserProfiles.ToList());
         }
 
